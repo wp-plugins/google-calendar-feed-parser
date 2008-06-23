@@ -1,0 +1,23 @@
+===Google Calendar Feed Parser===
+Contributors: bennettj1087
+Donate link: http://blog.jmbennett.org/2008/06/21/google-calendar-feed-parsergoogle-calendar-feed-parser
+Tags: google, calendar, xml, parser, feed
+Requires at least: 2.5.1
+Tested up to: 2.5.1
+Stable tag: 0.1
+
+This plugin parses and displays upcoming events from a Google Calendar XML feed.
+
+== Description ==
+
+This plugin will parse a Google Calendar XML Feed and display it on your blog.  Installation is simple
+and configuring and using the plugin is easy as well.  Please visit [the plugin's webpage](http://blog.jmbennett.org/2008/06/21/google-calendar-feed-parsergoogle-calendar-feed-parser)
+webpage at the [author's webpage](http://jmbennett.org) for more information.
+
+== Installation ==
+
+1. Upload `gcalparse.php` to the `/wp-content/plugins/` directory
+1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Place `<?php gcal_parse_feed(); ?>` in your template wherever you want your calendar feed to be displayed.
+1. Use the Google Calendar page of the WordPress Settings menu to configure the plugin.  See the plugin's webpage
+for complete descriptions of each option.
