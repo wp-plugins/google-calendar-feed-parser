@@ -20,3 +20,7 @@ and configuring and using the plugin is easy as well.  Please visit [the plugin'
 1. Place `<?php gcal_parse_feed(); ?>` in your template wherever you want your calendar feed to be displayed.
 1. Use the Google Calendar page of the WordPress Settings menu to configure the plugin.  See the plugin's webpage
 for complete descriptions of each option.
+
+== Screenshots ==
+
+1. This is a shot of the plugin in action in the sidebar of a blog.
