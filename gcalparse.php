@@ -3,7 +3,7 @@
 Plugin Name: Google Calendar Feed Parser
 Plugin URI: http://blog.jmbennett.org/2008/06/20/google-calendar-parser
 Description: Parses a Google Calendar XML feed for display in the sidebar of your blog.
-Version: 0.1
+Version: 0.2
 Author: Justin Bennett
 Author URI: http://jmbennett.org
 */
@@ -72,9 +72,15 @@ $option = get_option('gcal_static_url_option');
 			<input type="text" name="gcal_max_results" value="<?php echo get_option('gcal_max_results'); ?>" style="width: 20px" />
 			<br />The maximum number of events to retrieve and display.  If left blank, the default is 4.</td>
 		</tr>
+		<tr>
+			<th scope="row" valign="top">Timezone offset:</th>
+			<td>
+			<input type="text" name="gcal_timezone_offset" value="<?php echo get_option('gcal_timezone_offset'); ?>" style="width: 70px" /> seconds
+			<br />Offset to apply to start and end times from XML feed (default: 7200 seconds).  Only change if you're having problems with times not displaying correctly.</td>
+		</tr>
 	</table>
 	<input type="hidden" name="action" value="update" />
-	<input type="hidden" name="page_options" value="gcal_feed_url,gcal_static_url_option,gcal_static_url,gcal_max_results" />
+	<input type="hidden" name="page_options" value="gcal_feed_url,gcal_static_url_option,gcal_static_url,gcal_max_results,gcal_timezone_offset" />
 	<p class="submit">
 	<input type="submit" name="Submit" class="button" value="Save Changes" />
 	</p>
@@ -112,8 +118,11 @@ function gcal_parse_feed() {
 			echo '<h3><a href="' . $event_link  . '">' . $entry->title . "</a></h3>\n";
 		}
 
-		$start = date("l, F j \\f\\r\o\m g:ia", strtotime($gd->when->attributes()->startTime) + 7200);
-		$end = date("g:ia", strtotime($gd->when->attributes()->endTime) + 7200);
+		if (($offset = get_option('gcal_timezone_offset')) == '')
+		   $offset = 7200;
+
+		$start = date("l, F j \\f\\r\o\m g:ia", strtotime($gd->when->attributes()->startTime) + $offset);
+		$end = date("g:ia", strtotime($gd->when->attributes()->endTime) + $offset);
 
 		echo "<p class='event_time'>$start to $end</p></div>";
 	}
