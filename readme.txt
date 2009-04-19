@@ -1,6 +1,6 @@
 ===Google Calendar Feed Parser===
 Contributors: bennettj1087
-Donate link: http://blog.jmbennett.org/2008/06/21/google-calendar-feed-parsergoogle-calendar-feed-parser
+Donate link: http://blog.jmbennett.org/2008/06/21/google-calendar-feed-parser
 Tags: google, calendar, xml, parser, feed
 Requires at least: 2.5.1
 Tested up to: 2.7.1
