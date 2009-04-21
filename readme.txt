@@ -1,6 +1,6 @@
 ===Google Calendar Feed Parser===
 Contributors: bennettj1087
-Donate link: http://blog.jmbennett.org/2008/06/21/google-calendar-feed-parser
+Donate link: http://jmbennett.org/2008/06/21/google-calendar-feed-parser
 Tags: google, calendar, xml, parser, feed
 Requires at least: 2.5.1
 Tested up to: 2.7.1
@@ -11,7 +11,7 @@ This plugin parses and displays upcoming events from a Google Calendar XML feed.
 == Description ==
 
 This plugin will parse a Google Calendar XML Feed and display it on your blog.  Installation is simple
-and configuring and using the plugin is easy as well.  Please visit [the plugin's webpage](http://blog.jmbennett.org/2008/06/21/google-calendar-feed-parser) at the [author's webpage](http://jmbennett.org) for more information.
+and configuring and using the plugin is easy as well.  Please visit [the plugin's webpage](http://jmbennett.org/2008/06/21/google-calendar-feed-parser) at the [author's webpage](http://jmbennett.org) for more information.
 
 == Installation ==
 

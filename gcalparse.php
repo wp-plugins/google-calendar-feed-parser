@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Google Calendar Feed Parser
-Plugin URI: http://blog.jmbennett.org/2008/06/20/google-calendar-parser
+Plugin URI: http://jmbennett.org/2008/06/21/google-calendar-feed-parser/
 Description: Parses a Google Calendar XML feed for display in the sidebar of your blog.
 Version: 0.2
 Author: Justin Bennett
