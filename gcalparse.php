@@ -3,7 +3,7 @@
 Plugin Name: Google Calendar Feed Parser
 Plugin URI: http://jmbennett.org/2008/06/21/google-calendar-feed-parser/
 Description: Parses a Google Calendar XML feed for display in the sidebar of your blog.
-Version: 0.2
+Version: 0.3
 Author: Justin Bennett
 Author URI: http://jmbennett.org
 */
@@ -98,7 +98,7 @@ function gcal_parse_feed() {
 	$feed_url = get_option('gcal_feed_url');
 	$feed_url .= '&max-results=' . (( get_option('gcal_max_results') == '' ) ? '4' : get_option('gcal_max_results'));
 	
-	$xmlstr = file_get_contents($feed_url);
+	$xmlstr = wp_remote_fopen($feed_url);
 	$static_url = get_option('gcal_static_url_option');
 
 	$xml = new SimpleXMLElement($xmlstr);

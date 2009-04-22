@@ -4,7 +4,7 @@ Donate link: http://jmbennett.org/2008/06/21/google-calendar-feed-parser
 Tags: google, calendar, xml, parser, feed
 Requires at least: 2.5.1
 Tested up to: 2.7.1
-Stable tag: 0.2
+Stable tag: 0.3
 
 This plugin parses and displays upcoming events from a Google Calendar XML feed.
 
@@ -26,6 +26,8 @@ for complete descriptions of each option.
 1. This is a shot of the plugin in action in the sidebar of a blog.
 
 == Changelog ==
+
+0.3: Switched from using file_get_contents() to retrieve URL (which isn't allowed by many hosting providers) to using the WordPress function wp_remote_fopen().  This function firsts attempts to use fopen() to get the file and, if that fails, proceeds to use cURL.
 
 0.2: Add ability to configure custom time offsets.  This feature will be replaced with more comprehensive timezone controls in a future release.
 
