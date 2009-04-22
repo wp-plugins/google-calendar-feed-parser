@@ -27,7 +27,7 @@ for complete descriptions of each option.
 
 == Changelog ==
 
-0.3: Switched from using file_get_contents() to retrieve URL (which isn't allowed by many hosting providers) to using the WordPress function wp_remote_fopen().  This function firsts attempts to use fopen() to get the file and, if that fails, proceeds to use cURL.
+0.3: Switched from using file\_get\_contents() to retrieve URL (which isn't allowed by many hosting providers) to using the WordPress function wp\_remote\_fopen().  This function firsts attempts to use fopen() to get the file and, if that fails, proceeds to use cURL.
 
 0.2: Add ability to configure custom time offsets.  This feature will be replaced with more comprehensive timezone controls in a future release.
 
