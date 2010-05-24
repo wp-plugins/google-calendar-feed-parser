@@ -3,12 +3,12 @@
 Plugin Name: Google Calendar Feed Parser
 Plugin URI: http://jmbennett.org/2008/06/21/google-calendar-feed-parser/
 Description: Parses a Google Calendar XML feed for display in the sidebar of your blog.
-Version: 0.3
+Version: 0.4
 Author: Justin Bennett
 Author URI: http://jmbennett.org
 */
 
-/*  Copyright 2008  Justin M. Bennett  (email : bennettj1087@gmail.com)
+/*  Copyright 2008 - 2010  Justin M. Bennett  (email : bennettj1087@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,9 +29,6 @@ Author URI: http://jmbennett.org
 add_action("admin_menu", "gcal_add_menus");
 
 function gcal_add_menus() {
-  //add_submenu_page("settings.php", "Google Calendar Feed Parser", "Google Calendar", 10, 
-  //"gcal_parser", "gcal_display_menu");
-
   add_options_page("Google Calendar Feed Parser", "Google Calendar", 10, "gcal_admin", "gcal_display_menu");
 }
 
@@ -78,9 +75,15 @@ $option = get_option('gcal_static_url_option');
 			<input type="text" name="gcal_timezone_offset" value="<?php echo get_option('gcal_timezone_offset'); ?>" style="width: 70px" /> seconds
 			<br />Offset to apply to start and end times from XML feed (default: 7200 seconds).  Only change if you're having problems with times not displaying correctly.</td>
 		</tr>
+		<tr>
+			<th scope="row" valign="top">No Events Message:</th>
+			<td>
+			<input type="text" name="gcal_message" value="<?php echo get_option('gcal_message'); ?>" style="width: 600px" />
+			<br />Message to display if there are no events returned.</td>
+		</tr>
 	</table>
 	<input type="hidden" name="action" value="update" />
-	<input type="hidden" name="page_options" value="gcal_feed_url,gcal_static_url_option,gcal_static_url,gcal_max_results,gcal_timezone_offset" />
+	<input type="hidden" name="page_options" value="gcal_feed_url,gcal_static_url_option,gcal_static_url,gcal_max_results,gcal_timezone_offset,gcal_message" />
 	<p class="submit">
 	<input type="submit" name="Submit" class="button" value="Save Changes" />
 	</p>
@@ -101,9 +104,23 @@ function gcal_parse_feed() {
 	$xmlstr = wp_remote_fopen($feed_url);
 	$static_url = get_option('gcal_static_url_option');
 
-	$xml = new SimpleXMLElement($xmlstr);
+	// Try to parse the XML feed; catch the exception and return if it fails
+	try {
+		$xml = new SimpleXMLElement($xmlstr);
+	}
+	catch (Exception $e) {
+		echo "<p>Error parsing XML Feed.  Please check the URL of your Google Calendar XML Feed.  Refer to the plugin's documentation for more information.</p>";
+		return;
+	}
 
 	echo '<div id="events">';
+	
+	// If the number of upcoming events is zero, display the saved message and return
+	if (count($xml->entry) == 0) {
+		echo '<p>' . get_option('gcal_message') . '</p></div>';
+		return;
+	}
+	
 	foreach($xml->entry as $entry) {
 		echo '<div class="event">';
 		

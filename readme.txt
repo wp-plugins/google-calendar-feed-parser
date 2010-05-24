@@ -10,8 +10,13 @@ This plugin parses and displays upcoming events from a Google Calendar XML feed.
 
 == Description ==
 
+**Update:** I am currently in the midst of adding some functionality to the plugin and fixing some of the more obvious bugs.
+Please check back often for updates and feel free to use the forums on this site, comments on my blog or an email to me 
+to request features or suggest improvements.
+
 This plugin will parse a Google Calendar XML Feed and display it on your blog.  Installation is simple
-and configuring and using the plugin is easy as well.  Please visit [the plugin's webpage](http://jmbennett.org/2008/06/21/google-calendar-feed-parser) at the [author's webpage](http://jmbennett.org) for more information.
+and configuring and using the plugin is easy as well.  Please visit [the plugin's webpage](http://jmbennett.org/2008/06/21/google-calendar-feed-parser) 
+at the [author's webpage](http://jmbennett.org) for more information.
 
 == Installation ==
 
@@ -26,6 +31,8 @@ for complete descriptions of each option.
 1. This is a shot of the plugin in action in the sidebar of a blog.
 
 == Changelog ==
+
+0.4 (not yet released): This version will add error handling to the SimpleXML code as well as various features requested/suggested/submitted by several users of the plugin.
 
 0.3: Switched from using file\_get\_contents() to retrieve URL (which isn't allowed by many hosting providers) to using the WordPress function wp\_remote\_fopen().  This function firsts attempts to use fopen() to get the file and, if that fails, proceeds to use cURL.
 
